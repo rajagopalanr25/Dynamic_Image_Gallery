@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Navbar from "./Navbar"; 
+import Image from "./ImageCard";
+import imageData from "./data/images";
+import "./style.css"
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <h1 className="title">Dynamic Image Gallery</h1>
+
+      <div className="gallery">
+        {imageData.map((img, index) => (
+          <Image
+            key={index}
+            image={img.image}
+            title={img.title}
+            description={img.description}
+          />
+        ))}
+      </div>
+    </>
   );
 }
 
